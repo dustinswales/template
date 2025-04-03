@@ -1,5 +1,7 @@
 # About []
-This repository contains the authoratative code base for.
+This repository contains the authoratative code base for...
+
+Documentation could be found at...
 
 Governance and working practices can be found in the Wiki.
 
