@@ -1,10 +1,11 @@
 F90      = gfortran
 F90FLAGS = -Dstandalone -fdefault-real-8 -fdefault-double-8
 # NETCDF
+
 NC_INC   = -I$(NFHOME)/include
 NC_LIB   = -L$(NFHOME)/lib
 LDFLAGS += $(NC_LIB) -lnetcdff
-
+F90FLAGS+= $(NC_INC)
 SRC=machine.F90 driver.F90
 OBJ=machine.o driver.o
 
