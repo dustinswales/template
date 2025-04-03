@@ -1,10 +1,7 @@
-# Description
-Template repository with governance and continuous integration
-
 # Governance for [] development
 This document describes the governance structure and working practices of the [] repository. Outlined below are the steps that developers should follow if they want to make contributions to this repository. 
 
-# Communicate with us early
+## Communicate with us early
 All proposed changes should be discussed with the primary developer(s) before introducing any code modifications. Please open a GitHub issue as early as possible, preferably when you are planning a change. This issue should clearly describe the purpose and scope of the change.
 
 # Create Fork and Branch
