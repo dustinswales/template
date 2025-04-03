@@ -3,7 +3,8 @@
 ! ###########################################################################################
 program driver
   use machine, only: wp => kind_phys, sp => kind_sngl_prec, dp => kind_dbl_prec
-
+  use scheme,  only: scheme_run
+  
   implicit none
 
   character(len=256) :: file_datain
@@ -13,23 +14,14 @@ program driver
   file_datain = 'input_data.nc'
   call read_sample_data(file_datain)
   
-  ! Call driver
-  call run_driver()
+  ! Call scheme
+  call scheme_run()
 
   ! Write output
   file_dataout = 'driver_data.nc'
   call write_output(file_dataout)
 
 contains
-  ! #########################################################################################
-  ! Main driver
-  ! #########################################################################################
-  subroutine run_driver
-
-    print*,'running driver...'
-
-  end subroutine run_driver
-  
   ! #########################################################################################
   ! Subroutine to read sample data for offline driver.
   ! #########################################################################################

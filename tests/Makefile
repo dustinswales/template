@@ -6,14 +6,14 @@ NC_INC   = -I$(NFHOME)/include
 NC_LIB   = -L$(NFHOME)/lib
 LDFLAGS += $(NC_LIB) -lnetcdff
 F90FLAGS+= $(NC_INC)
-SRC=machine.F90 driver.F90
-OBJ=machine.o driver.o
+
+OBJ=machine.o scheme.o
 
 %.o: %.F90
-	$(F90) $(F90FLAGS) -c $(SRC)
+	$(F90) $(F90FLAGS) -c $<
 
 %: %.o
-	$(F90) $(F90FLAGS) -o $@ $^ $(LDFLAGS)
+	$(F90) $(F90FLAGS) -o $@ $^ $(OBJ) $(LDFLAGS)
 
 offline_driver:
 	make driver
@@ -22,4 +22,6 @@ clean:
 	@rm -f *.mod *.o driver
 
 # Offline driver
-driver.o  : machine.o
+scheme.o : machine.o
+driver.o : machine.o scheme.o
+driver   : driver.o
