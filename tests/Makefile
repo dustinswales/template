@@ -7,6 +7,9 @@ NC_LIB   = -L$(NFHOME)/lib
 LDFLAGS += $(NC_LIB) -lnetcdff
 F90FLAGS+= $(NC_INC)
 
+SRC_PATH = ../
+VPATH    = $(SRC_PATH)
+
 OBJ=machine.o scheme.o
 
 %.o: %.F90
