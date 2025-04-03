@@ -13,7 +13,7 @@ jobs:
 
     # Environmental variables
     env:
-      NFHOME:      /home/runner/netcdf-fortran
+      NFHOME: /usr
       NFVERSION:   v4.5.3
       driver_ROOT: /home/runner/work/template/template
 
@@ -23,25 +23,11 @@ jobs:
     - name: Checkout code (into ${driver_ROOT})
       uses: actions/checkout@v3
 
-    - name: Install NetCDF C library
-      run: sudo apt-get install libnetcdf-dev
-
-    - name: Cache NetCDF Fortran library
-      id: cache-netcdf-fortran
-      uses: actions/cache@v4
-      with:
-        path: /home/runner/netcdf-fortran
-        key: cache-netcdf-fortran-${{matrix.fortran-compiler}}-${{matrix.build-type}}-key
-
-    - name: Install NetCDF Fortran library
-      if: steps.cache-netcdf-fortran.outputs.cache-hit != 'true'
+    # NetCDF C and FORTRAN libraries
+    - name: Install NetCDF library
       run: |
-        git clone --branch ${NFVERSION} https://github.com/Unidata/netcdf-fortran.git
-        cd netcdf-fortran
-        ./configure
-        make -j
-        sudo make install
-        export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${NFHOME}/lib
+        sudo apt-get update
+        sudo apt-get install libnetcdff-dev
 
     - name: Build unit tests
       run: |
