@@ -1,7 +1,7 @@
 # About []
-This repository contains the authoratative code base for []
-...
-Link to repository governance in Wiki.
+This repository contains the authoratative code base for.
+
+Governance and working practices can be found in the Wiki.
 
 # Building and Running the offline tests
 Distributed with the repository is an offline driver to run the parameterization with a limited set of meteorological conditions. 
