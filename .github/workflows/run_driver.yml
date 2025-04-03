@@ -32,7 +32,7 @@ jobs:
     - name: Build unit tests
       run: |
         cd ${driver_ROOT}/tests
-        make driver
+        make offline_driver
 
     - name: Run unit tests
       run: |
