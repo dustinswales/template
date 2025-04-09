@@ -58,6 +58,7 @@ This file contains a workflow that will run the offline driver (template #2) on 
 To extend this CI template for your needs:
 - The offline driver doesn't have a validation step, which could(should) be built into the CI workflow.
 - Add step to compare scheme outputs to baselines*.
+
 *If small enough, these baselines could be included in the repository, but large datasets should be stored externally. Same applies for the sample input data, tests/input_data.nc
 
 # Other information
