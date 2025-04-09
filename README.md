@@ -1,5 +1,5 @@
 # About template
-This repository provides several infrastructure templates that CCPP physics parameterization developers could adopt if/when they migrate to hosting their code within a submodule.
+This repository provides several infrastructure pieces that CCPP physics parameterization developers could adopt if/when they migrate to hosting their code within a submodule.
 
 If you already have created a GitHub repository and want to build out the infrastructure, skip below to template descriptions.
 
