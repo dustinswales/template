@@ -9,7 +9,7 @@ _I can't speak to how host models outside the UWM operate, but in general the su
 
 # Template #1: Working practices and Governance 
 The most important piece of information for your repository to contain is how the repository is managed. This should be visible and clearly define how changes are, or are not, included into this codebase.
-Within the [Wiki] (https://github.com/dustinswales/template/wiki/Governance) of this repository there is a template for repository governance that you could customize for your application(s). 
+Within the [Wiki](https://github.com/dustinswales/template/wiki/Governance) of this repository there is a template for repository governance that you could customize for your application(s). 
 You could include this information directly within your repositories main README.md file, or create a Wiki page as is done here.
 
 The governance template would be incomplete without a testing component. The next two templates provide the initial infrastructure to setup a robust testing harness to support offline development. 
