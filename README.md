@@ -24,9 +24,9 @@ tests/input_data.nc  - Empty scheme input file.
 
 To build the offline driver you will need a Fortran compiler and the NetCDF library. 
 There is an example script (tests/setup_hera.csh) to illustrate how to do this on NOAA RDHPCS Hera.
-> cd tests/
-> make offline_driver
-> ./offline_driver
+- cd tests/
+- make offline_driver
+- ./offline_driver
 Input to the offline driver are contained within tests/input_data.nc, currently empty.
 Outputs from the offline driver will be written to tests/driver_data.nc, currently empty.
 
