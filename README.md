@@ -39,8 +39,10 @@ Outputs from the offline driver will be written to tests/driver_data.nc, current
 
 At this point the offline driver should build with your linked scheme file(s).
 
-To extend this driver template within your repository:
+####To extend this driver template within your repository:
+
 NOTE: This template does not come with any sample data to drive/validate your scheme. This is your responsibility to provide or create. 
+
 Once you have sample data:
 - Ingest scheme input data into offline driver. To do this extend the read_sample_data() procedure to read in data needed to run your scheme.
 - Write scheme output data to NetCDF file. To do this extend the write_output() procedure to output data needed to validate your scheme.
