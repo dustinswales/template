@@ -3,7 +3,9 @@ This repository provides several infrastructure templates that CCPP physics para
 
 If you already have created a GitHub repository and want to build out the infrastructure, skip below to template descriptions.
 
-If you need to create a new GitHub repository, you could do this within your personal GitHub account. HOWEVER, if/when the time comes to including these changes with the CCPP Physics repository, the Pull Request cannot point to your personal fork. For this reason we encourage you to create any new GitHub repositories under a supported organization (e.g. NCAR or ufs-community). (I can't speak to how host models outside the UWM operate, but in general the submodule needs to be hosted under a community recognized organization)
+If you need to create a new GitHub repository, you could do this within your personal GitHub account. 
+HOWEVER, if/when the time comes to including these changes with the CCPP Physics repository, the Pull Request cannot point to your personal fork. For this reason we encourage you to create any new GitHub repositories under a supported organization (e.g. NCAR or ufs-community). 
+(I can't speak to how host models outside the UWM operate, but in general the submodule needs to be hosted under a community recognized organization)
 
 # Template #1: Working practices and Governance 
 The most important piece of information for your repository to contain is how the repository is managed. This should be visible and clearly define how changes are, or are not, included into this codebase.
