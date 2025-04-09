@@ -30,9 +30,9 @@ There is an example script (tests/setup_hera.csh) to illustrate how to do this o
 - make offline_driver
 - ./offline_driver
 
-Inputs to the offline driver are contained within tests/input_data.nc, currently empty.
+Inputs to the offline driver are contained within tests/input_data.nc, **currently empty**.
 
-Outputs from the offline driver will be written to tests/driver_data.nc, currently empty.
+Outputs from the offline driver will be written to tests/driver_data.nc, **currently empty**.
 
 #### To adopt this driver template within your repository:
 - Copy the contents of tests/ into your repository.
@@ -42,7 +42,7 @@ At this point the offline driver should build with your linked scheme file(s).
 
 ####To extend this driver template within your repository:
 
-NOTE: This template does not come with any sample data to drive/validate your scheme. This is your responsibility to provide or create. 
+**NOTE:** This template does not come with any sample data to drive/validate your scheme. This is your responsibility to provide or create. 
 
 Once you have sample data:
 - Ingest scheme input data into offline driver. To do this extend the read_sample_data() procedure to read in data needed to run your scheme.
