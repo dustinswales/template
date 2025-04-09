@@ -24,7 +24,7 @@ scheme.F90           - Scheme file.
 tests/input_data.nc  - Empty scheme input file.
 *It is best practice for the host to contol the precision, not the physics, so it's best to preserve this distinction within the submodule.
 
-## To build the offline driver you will need a Fortran compiler and the NetCDF library. 
+#### To build the offline driver you will need a Fortran compiler and the NetCDF library. 
 There is an example script (tests/setup_hera.csh) to illustrate how to do this on NOAA RDHPCS Hera.
 - cd tests/
 - make offline_driver
@@ -33,7 +33,7 @@ There is an example script (tests/setup_hera.csh) to illustrate how to do this o
 Input to the offline driver are contained within tests/input_data.nc, currently empty.
 Outputs from the offline driver will be written to tests/driver_data.nc, currently empty.
 
-## To adopt this driver template within your repository:
+#### To adopt this driver template within your repository:
 - Copy the contents of tests/ into your repository.
 - Replace references to scheme.F90 with references to your scheme.
 
@@ -52,12 +52,12 @@ This will give you a green check mark (!) in the GitHub repository pase once you
 Alternatively, one may want to run the offline driver automatically on GitHub servers every time a change is introduced (e.g. Pull Request), or more frequently (e.g. Push).
 (Personally, I think it's vastly more efficient to do a "git push" to run my tests versus running the driver offline. I don't need to set up an environment, open another window to run the driver, etc...)
 
-## To adopt this CI template within your repository:
+#### To adopt this CI template within your repository:
 - Copy the .github/workflows/run_driver.yml file to your repository.
 
 This file contains a workflow that will run the offline driver (template #2) on the GitHub servers.
 
-## To extend this CI template for your needs:
+#### To extend this CI template for your needs:
 - The offline driver doesn't have a validation step, which could(should) be built into the CI workflow.
 - Add step to compare scheme outputs to baselines*.
 
