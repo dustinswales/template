@@ -45,8 +45,10 @@ At this point the offline driver should build with your linked scheme file(s).
 **NOTE:** This template does not come with any sample data to drive/validate your scheme. This is your responsibility to provide or create. 
 
 Once you have sample data:
-- Ingest scheme input data into offline driver. To do this extend the read_sample_data() procedure to read in data needed to run your scheme.
-- Write scheme output data to NetCDF file. To do this extend the write_output() procedure to output data needed to validate your scheme.
+- Ingest scheme input data into offline driver.
+    - To do this extend the read_sample_data() procedure to read in data needed to run your scheme.
+- Write scheme output data to NetCDF file.
+    - To do this extend the write_output() procedure to output data needed to validate your scheme.
 
 Without any data to drive your scheme, as an initial step you could still connect your scheme to this driver to ensure that it builds. 
 This will give you a green check mark (!) in the GitHub repository pase once you hook the driver up to CI (template #3).
