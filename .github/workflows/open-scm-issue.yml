@@ -1,0 +1,69 @@
+# .github/workflows/open-scm-issue.yml  (in NCAR/ccpp-physics)
+#
+# When a pull request is merged into ccpp-physics, open a tracking issue
+# in NCAR/ccpp-scm.
+#
+# Requires a repository secret named SCM_ISSUE_TOKEN: a fine-grained PAT
+# (or GitHub App token) with "Issues: Read and write" on NCAR/ccpp-scm.
+# The default GITHUB_TOKEN cannot write to other repositories.
+
+name: Open issue in ccpp-scm on merge
+
+on:
+  # pull_request_target runs in the base-repo context, so secrets are
+  # available even for PRs from forks. This job never checks out PR code,
+  # which keeps that safe.
+  pull_request_target:
+    types: [closed]
+    branches: [main]   # adjust to the branch(es) you care about
+
+permissions: {}        # this job needs nothing from GITHUB_TOKEN
+
+jobs:
+  open-issue:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create issue in NCAR/ccpp-scm
+        env:
+          GH_TOKEN: ${{ secrets.SCM_ISSUE_TOKEN }}
+          TARGET_REPO: dustinswales/ccpp-scm
+          # Passed via env (not inlined in the script) to prevent
+          # script injection from PR titles/bodies.
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          MERGED_BY: ${{ github.event.pull_request.merged_by.login }}
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          SOURCE_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          title="ccpp-physics PR #${PR_NUMBER} merged: ${PR_TITLE}"
+
+          body=$(cat <<EOF
+          A pull request was merged into \`${SOURCE_REPO}\` (\`${BASE_REF}\`) that may require follow-up in the SCM.
+
+          - **PR:** ${PR_URL}
+          - **Author:** @${PR_AUTHOR}
+          - **Merged by:** @${MERGED_BY}
+          - **Merge commit:** ${SOURCE_REPO}@${MERGE_SHA}
+
+          _This issue was opened automatically by a GitHub Actions workflow in ${SOURCE_REPO}._
+          EOF
+          )
+
+          # Avoid duplicates if the workflow is re-run.
+          existing=$(gh issue list --repo "$TARGET_REPO" --state all \
+            --search "\"ccpp-physics PR #${PR_NUMBER} merged\" in:title" \
+            --json number --jq 'length')
+          if [ "$existing" -gt 0 ]; then
+            echo "Issue for PR #${PR_NUMBER} already exists; skipping."
+            exit 0
+          fi
+
+          gh issue create --repo "$TARGET_REPO" --title "$title" --body "$body"
+          # Optional: add --label "ccpp-physics-update" (label must exist in ccpp-scm)
+          #           or --assignee <user>
